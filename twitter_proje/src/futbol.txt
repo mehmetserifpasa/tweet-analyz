@@ -15,6 +15,13 @@ konyaspor
 mke ankaragücü
 sivasspor
 trabzonspor
+@fenerbahce
+@galatasaray
+@fenerbahçe
+@besiktas
+@beşiktaş
+@trabzonspor
+@rizespor
 yeni malatyaspor
 adana demirspor
 adanaspor

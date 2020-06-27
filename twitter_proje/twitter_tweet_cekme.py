@@ -27,8 +27,13 @@ class Analiz:
         self.din = [din.strip() for din in open('src/din.txt')]
         self.dini_oran = 0
 
+        self.olumsuz = [olumsuz.strip() for olumsuz in open('src/negatif.txt')]
+        self.olumsuz_oran = 0
+
 
         self.kac_kez_gecti = set()
+
+        self.hicbirsey_bulunamayan_kelimeler = set()
 
 
     def kufur_liste(self, data, kufur_cumle):
@@ -39,6 +44,9 @@ class Analiz:
             print("Argo içerikli: "+ data)
 
             self.kufur_oran += 1
+
+        else:
+            self.hicbirsey_bulunamayan_kelimeler.add(data)
 
 
     def siyaset_liste(self, data, siyaset_cumle):
@@ -69,11 +77,17 @@ class Analiz:
             print("Dini içerik: "+ data)
             self.dini_oran += 1
 
+    def negatif_liste(self, data, negatif_cumle):
+        self.negatif_cumle = negatif_cumle
+        if data in self.olumsuz:
+            print("Negatif içerikli cümle: "+ data)
+            self.olumsuz_oran += 1
+
 
 
 # -----------  TWEETLERİ ÇEKME BÖLÜMÜ  -----------
 
-# düzenlenicek yer
+# düzenlenicek bölüm
 headers = {
     '' : '',
 }
@@ -86,7 +100,7 @@ include_profile_interstitial_type=1&include_blocking=1&include_blocked_by=1\
 &include_ext_alt_text=true&include_reply_count=1&tweet_mode=extended&include_entities=true\
 &include_user_entities=true&include_ext_media_color=true&include_ext_media_availability=true\
 &send_error_codes=true&simple_quoted_tweet=true&include_tweet_replies=true\
-&userId="+str(sys.argv[1])+"&count=200000&ext=mediaStats%2ChighlightedLabel\
+&userId="+str(sys.argv[1])+"&count=999999&ext=mediaStats%2ChighlightedLabel\
 &include_quote_count=true"
 
 
@@ -179,9 +193,11 @@ for i in butun_Tweetler: #sadece tweetleri görmek istiyorsak burayı düzenleme
         obje.futbol_liste(k, i)
         obje.siyaset_liste(k, i)
         obje.din_liste(k, i)
+        obje.negatif_liste(k, i)
 
 
-oran_toplam = obje.olumlu_oran + obje.siyaset_oran + obje.kufur_oran + obje.dini_oran + obje.futbol_oran
+
+oran_toplam = obje.olumlu_oran + obje.siyaset_oran + obje.kufur_oran + obje.dini_oran + obje.futbol_oran+ obje.olumsuz_oran
 
 print("\n\n" + '-'*20 + " Tweet Analiz: " + str(len(butun_Tweetler))+" " + '-'*20
 +"\nPozitif Oran: %" + str((int(obje.olumlu_oran)*100) / oran_toplam)[0:5]) #yüzde hesapladık ve ilk 5 karakterini bastırdık
@@ -189,5 +205,9 @@ print("Siyasi oran: %" + str((int(obje.siyaset_oran)*100) / oran_toplam)[0:5])
 print("Argo oranı: %" + str((int(obje.kufur_oran)*100) / oran_toplam)[0:5])
 print("Dini oran: %" + str((int(obje.dini_oran)*100) / oran_toplam)[0:5])
 print("Futbol Oran: %" + str((int(obje.futbol_oran)*100) / oran_toplam)[0:5])
+print("Negatif Oran: %" + str((int(obje.olumsuz_oran)*100) / oran_toplam)[0:5])
+
 
 #print("\nEn çok kullanılan kelime: "+str(kac_kez_list[max_sayi]))
+
+#print(obje.hicbirsey_bulunamayan_kelimeler)
