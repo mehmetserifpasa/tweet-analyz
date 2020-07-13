@@ -76,6 +76,8 @@ amngtn
 amnn
 amona
 amq
+mk
+senin ben ananı
 amsız
 amsiz
 amsz
@@ -86,7 +88,6 @@ amuna
 anaaann
 anal
 analarn
-anam
 anamla
 anan
 anana
@@ -179,9 +180,6 @@ cenabet
 cibiliyetsiz
 cibilliyetini
 cibilliyetsiz
-cif
-cikar
-cim
 çük
 dalaksız
 dallama
@@ -367,7 +365,7 @@ madafaka
 mal
 malafat
 malak
-manyak
+manyak.
 mcik
 meme
 memelerini
@@ -378,6 +376,7 @@ mna
 monakkoluyum
 motherfucker
 mudik
+manyak
 oc
 ocuu
 ocuun
