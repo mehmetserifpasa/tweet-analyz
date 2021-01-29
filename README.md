@@ -3,9 +3,9 @@
 
 # Kullanım
 
-python3 twitter_tweet_cekme.py 999945475070615553
+python3 twitter_tweet_cekme.py 999945475070115553
 
-999945475070615553 --> Twitter user id no
+999945475070115553 --> Twitter user id no
 
 # Not
 
